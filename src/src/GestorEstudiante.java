@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+public class GestorEstudiante {
+    private ArrayList<Estudiante> listaEstudiantes;
+    private int siguienteId;
+
+    public GestorEstudiante(){
+        this.listaEstudiantes = new ArrayList<>();
+        this.siguienteId = 1;
+    }
+
+    //Esta funcion va a agregar un nuevo estudiante y le asigna automaticamente un id
+    public Estudiante agregarEstudiante(String nombre, boolean estado, double promedio, String identificacion, String carrera, String curso){
+        Estudiante nuevo = new Estudiante(siguienteId, nombre, estado, promedio, identificacion, carrera, curso);
+        listaEstudiantes.add(nuevo);
+        siguienteId++;
+        return nuevo;
+    }
+
+    public Estudiante buscarPorId(int id) {
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getId() == id) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+    //Elimina un estudiante por id. Retorna true si lo encontro y elimino
+    public boolean eliminarEstudiante(int id){
+        Estudiante estudiante = buscarPorId(id);
+        if (estudiante != null){
+            listaEstudiantes.remove(estudiante);
+            return true;
+        }
+        return false;
+    }
+
+}

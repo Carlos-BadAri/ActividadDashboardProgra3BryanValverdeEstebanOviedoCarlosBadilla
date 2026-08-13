@@ -126,28 +126,28 @@ public class DashBoardControlAcademico extends JFrame {
         opciones.setLayout(new BoxLayout(opciones, BoxLayout.Y_AXIS));
         opciones.setBorder(new EmptyBorder(5, 12, 5, 12));
 
-        opciones.add(crearBotonMenu("⌂  Inicio", true));
+        opciones.add(crearBotonMenu("⌂", " Inicio", true));
         opciones.add(Box.createVerticalStrut(7));
-        opciones.add(crearBotonMenu("☺  Estudiantes", false));
+        opciones.add(crearBotonMenu("☺", " Estudiantes", false));
         opciones.add(Box.createVerticalStrut(7));
-        opciones.add(crearBotonMenu("□  Carreras", false));
+        opciones.add(crearBotonMenu("□" , " Carreras", false));
         opciones.add(Box.createVerticalStrut(7));
-        opciones.add(crearBotonMenu("▥  Cursos", false));
+        opciones.add(crearBotonMenu("▥", " Cursos", false));
         opciones.add(Box.createVerticalStrut(7));
-        opciones.add(crearBotonMenu("▤  Reportes", false));
+        opciones.add(crearBotonMenu("▤", " Reportes", false));
         opciones.add(Box.createVerticalStrut(7));
-        opciones.add(crearBotonMenu("⚙  Configuración", false));
+        opciones.add(crearBotonMenu("⚙", " Configuración", false));
         opciones.add(Box.createVerticalStrut(7));
-        opciones.add(crearBotonMenu("ⓘ  Acerca de", false));
+        opciones.add(crearBotonMenu("ⓘ", " Acerca de", false));
 
         menu.add(opciones, BorderLayout.CENTER);
 
         return menu;
     }
 
-    private JButton crearBotonMenu(String texto, boolean activo) {
+    private JButton crearBotonMenu(String icono, String texto, boolean activo) {
 
-        JButton boton = new JButton(texto);
+        JButton boton = new JButton(icono + " " + texto);
 
         boton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
         boton.setPreferredSize(new Dimension(200, 50));
@@ -178,8 +178,7 @@ public class DashBoardControlAcademico extends JFrame {
         boton.addActionListener(e ->
                 JOptionPane.showMessageDialog(
                         DashBoardControlAcademico.this,
-                        "Seleccionó: " + texto.replaceAll("[^A-Za-zÁÉÍÓÚáéíóúñÑ ]", "").trim()
-                )
+                        "Seleccionó: " + texto)
         );
 
         return boton;

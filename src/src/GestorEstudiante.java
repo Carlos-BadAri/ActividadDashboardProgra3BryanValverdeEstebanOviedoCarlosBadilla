@@ -9,7 +9,8 @@ public class GestorEstudiante {
     }
 
     //Esta funcion va a agregar un nuevo estudiante y le asigna automaticamente un id
-    public Estudiante agregarEstudiante(String nombre, boolean estado, double promedio, String identificacion, String carrera, String curso){
+    public Estudiante agregarEstudiante(String nombre, boolean estado, double promedio, String identificacion,
+                                        String carrera, String curso){
         Estudiante nuevo = new Estudiante(siguienteId, nombre, estado, promedio, identificacion, carrera, curso);
         listaEstudiantes.add(nuevo);
         siguienteId++;
@@ -33,6 +34,18 @@ public class GestorEstudiante {
             return true;
         }
         return false;
+    }
+    public boolean modificarEstudiante(int id, String nombre, boolean estado, double promedio, String identificacion, String carrera, String curso) {
+        Estudiante estudiante = buscarPorId(id);
+        if (estudiante != null) {
+            estudiante.setNombre(nombre);
+            estudiante.setEstado(estado);
+            estudiante.setPromedio(promedio);
+            estudiante.setIdentificacion(identificacion);
+            estudiante.setCarrera(carrera);
+            estudiante.setCurso(curso);
+        }
+        return true;
     }
 
 }

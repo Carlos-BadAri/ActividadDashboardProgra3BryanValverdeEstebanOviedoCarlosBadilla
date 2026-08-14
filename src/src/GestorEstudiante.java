@@ -63,6 +63,16 @@ public class GestorEstudiante {
         }
         return null;
     }
-
+    // Búsqueda parcial por nombre (no distingue mayúsculas/minúsculas)
+    public ArrayList<Estudiante> buscarPorNombre(String texto) {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        String textoBusqueda = texto.toLowerCase().trim();
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getNombre().toLowerCase().contains(textoBusqueda)) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
 
 }

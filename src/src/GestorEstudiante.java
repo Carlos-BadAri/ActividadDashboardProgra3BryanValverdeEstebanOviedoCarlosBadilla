@@ -8,7 +8,7 @@ public class GestorEstudiante {
         this.siguienteId = 1;
     }
 
-    //Esta funcion va a agregar un nuevo estudiante y le asigna automaticamente un id
+    //Esta funcion va a agregar un nuevo estudiante y le asigna automaticamente un id.
     public Estudiante agregarEstudiante(String nombre, boolean estado, double promedio, String identificacion,
                                         String carrera, String curso){
         Estudiante nuevo = new Estudiante(siguienteId, nombre, estado, promedio, identificacion, carrera, curso);

@@ -27,7 +27,7 @@ public Estudiante(int id, String nombre, boolean estado, double promedio, String
     this.curso = curso;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
@@ -36,51 +36,66 @@ public Estudiante(int id, String nombre, boolean estado, double promedio, String
     }
 
     public double getPromedio() {
-        return promedio;
+
+    return promedio;
     }
 
     public void setPromedio(double promedio) {
-        this.promedio = promedio;
+
+    this.promedio = promedio;
     }
 
     public String getNombre() {
-        return nombre;
+
+    return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    this.nombre = nombre;
     }
 
     public boolean isEstado() {
-        return estado;
+
+    if(promedio>68){
+        estado = true;
+    }
+    return estado;
     }
 
     public void setEstado(boolean estado) {
-        this.estado = estado;
+
+    this.estado = estado;
     }
 
     public String getIdentificacion() {
-        return identificacion;
+
+    return identificacion;
     }
 
     public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
+
+    this.identificacion = identificacion;
     }
 
     public String getCarrera() {
-        return carrera;
+
+    return carrera;
     }
 
     public void setCarrera(String carrera) {
-        this.carrera = carrera;
+
+    this.carrera = carrera;
     }
 
     public String getCurso() {
-        return curso;
+
+    return curso;
     }
 
     public void setCurso(String curso) {
-        this.curso = curso;
+
+    this.curso = curso;
     }
 
 

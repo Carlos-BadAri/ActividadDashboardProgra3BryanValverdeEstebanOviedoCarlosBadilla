@@ -63,12 +63,31 @@ public class GestorEstudiante {
         }
         return null;
     }
-    // Búsqueda parcial por nombre (no distingue mayúsculas/minúsculas)
+    // Búsqueda parcial por nombre
     public ArrayList<Estudiante> buscarPorNombre(String texto) {
         ArrayList<Estudiante> resultado = new ArrayList<>();
         String textoBusqueda = texto.toLowerCase().trim();
         for (Estudiante e : listaEstudiantes) {
             if (e.getNombre().toLowerCase().contains(textoBusqueda)) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
+public ArrayList<Estudiante> filtrarPorCarrera(String carrera) {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getCarrera().equalsIgnoreCase(carrera)) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
+
+    public ArrayList<Estudiante> filtrarPorCurso(String curso) {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getCurso().equalsIgnoreCase(curso)) {
                 resultado.add(e);
             }
         }

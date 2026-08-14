@@ -94,4 +94,14 @@ public ArrayList<Estudiante> filtrarPorCarrera(String carrera) {
         return resultado;
     }
 
+    public ArrayList<Estudiante> filtrarPorCondicion(boolean estado) {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : listaEstudiantes) {
+            if (e.isEstado() == estado) {
+                resultado.add(e);//Si el estado es true, aprobado, si no reprobado
+            }
+        }
+        return resultado;
+    }
+
 }

@@ -94,4 +94,57 @@ public ArrayList<Estudiante> filtrarPorCarrera(String carrera) {
         return resultado;
     }
 
+    public ArrayList<Estudiante> filtrarPorCondicion(boolean estado) {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : listaEstudiantes) {
+            if (e.isEstado() == estado) {
+                resultado.add(e);//Si el estado es true, aprobado, si no reprobado
+            }
+        }
+        return resultado;
+    }
+// Estadísticas para el Dashboard
+    public int obtenerTotalEstudiantes() {
+        return listaEstudiantes.size();
+    }
+
+    public int obtenerTotalAprobados() {
+        int total = 0;
+        for (Estudiante e : listaEstudiantes) {
+            if (e.isEstado()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public int obtenerTotalReprobados() {
+        int total = 0;
+        for (Estudiante e : listaEstudiantes) {
+            if (!e.isEstado()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public double obtenerPromedioGeneral() {
+        if (listaEstudiantes.isEmpty()) {
+            return 0.0;
+        }
+        double suma = 0.0;
+        for (Estudiante e : listaEstudiantes) {
+            suma += e.getPromedio();
+        }
+        return suma / listaEstudiantes.size();
+    }
+
+    public ArrayList<Estudiante> listarTodos() {
+        return listaEstudiantes;
+    }
+ //esta funcion lo que hace es ver si ya hay otro estudiante con esa identificacion
+    public boolean existeIdentificacion(String identificacion) {
+        return buscarPorIdentificacion(identificacion) != null;
+    }
+
 }

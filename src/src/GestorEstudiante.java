@@ -103,5 +103,41 @@ public ArrayList<Estudiante> filtrarPorCarrera(String carrera) {
         }
         return resultado;
     }
+// Estadísticas para el Dashboard
+    public int obtenerTotalEstudiantes() {
+        return listaEstudiantes.size();
+    }
+
+    public int obtenerTotalAprobados() {
+        int total = 0;
+        for (Estudiante e : listaEstudiantes) {
+            if (e.isEstado()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public int obtenerTotalReprobados() {
+        int total = 0;
+        for (Estudiante e : listaEstudiantes) {
+            if (!e.isEstado()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public double obtenerPromedioGeneral() {
+        if (listaEstudiantes.isEmpty()) {
+            return 0.0;
+        }
+        double suma = 0.0;
+        for (Estudiante e : listaEstudiantes) {
+            suma += e.getPromedio();
+        }
+        return suma / listaEstudiantes.size();
+    }
+
 
 }

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-public class GestorEstudiante {
+public class GestorEstudiantes {
     private ArrayList<Estudiante> listaEstudiantes;
     private int siguienteId;
 
-    public GestorEstudiante(){
+    public GestorEstudiantes(){
         this.listaEstudiantes = new ArrayList<>();
         this.siguienteId = 1;
     }
@@ -35,7 +35,9 @@ public class GestorEstudiante {
         }
         return false;
     }
-    public boolean modificarEstudiante(int id, String nombre, boolean estado, double promedio, String identificacion, String carrera, String curso) {
+    public boolean modificarEstudiante(int id, String nombre, String identificacion,
+                                       String carrera, String curso, double promedio,
+                                       boolean estado) {
         Estudiante estudiante = buscarPorId(id);
         if (estudiante != null) {
             estudiante.setNombre(nombre);
@@ -57,7 +59,7 @@ public class GestorEstudiante {
     }
     public Estudiante buscarPorIdentificacion(String identificacion){
         for (Estudiante e: listaEstudiantes){
-            if(e.getIdentificacion() == identificacion){
+            if(e.getIdentificacion().equalsIgnoreCase(identificacion)){
                 return e;
             }
         }
@@ -92,6 +94,59 @@ public ArrayList<Estudiante> filtrarPorCarrera(String carrera) {
             }
         }
         return resultado;
+    }
+
+    public ArrayList<Estudiante> filtrarPorCondicion(boolean estado) {
+        ArrayList<Estudiante> resultado = new ArrayList<>();
+        for (Estudiante e : listaEstudiantes) {
+            if (e.isEstado() == estado) {
+                resultado.add(e);
+            }
+        }
+        return resultado;
+    }
+
+    public int obtenerTotalEstudiantes() {
+        return listaEstudiantes.size();
+    }
+
+    public int obtenerTotalAprobados() {
+        int total = 0;
+        for (Estudiante e : listaEstudiantes) {
+            if (e.isEstado()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public int obtenerTotalReprobados() {
+        int total = 0;
+        for (Estudiante e : listaEstudiantes) {
+            if (!e.isEstado()) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    public double obtenerPromedioGeneral() {
+        if (listaEstudiantes.isEmpty()) {
+            return 0.0;
+        }
+        double suma = 0.0;
+        for (Estudiante e : listaEstudiantes) {
+            suma += e.getPromedio();
+        }
+        return suma / listaEstudiantes.size();
+    }
+
+    public ArrayList<Estudiante> listarTodos() {
+        return listaEstudiantes;
+    }
+
+    public boolean existeIdentificacion(String identificacion) {
+        return buscarPorIdentificacion(identificacion) != null;
     }
 
 }

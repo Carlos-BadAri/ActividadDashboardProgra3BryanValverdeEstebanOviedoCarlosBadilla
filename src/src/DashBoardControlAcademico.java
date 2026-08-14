@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DashBoardControlAcademico extends JFrame {
 
-    //Apartado de color
+    //apartado de color
     private final Color COLOR_MENU = new Color(28, 58, 82);
     private final Color COLOR_MENU_ACTIVO = new Color(42, 116, 220);
     private final Color COLOR_FONDO = new Color(247, 249, 252);
@@ -35,13 +35,13 @@ public class DashBoardControlAcademico extends JFrame {
     private DefaultTableModel modeloTabla;
     private TableRowSorter<DefaultTableModel> sorter;
 
-    //Tarjetas del dashboard
+    //Tarjetas del dasboard
     private JLabel lblTotalEstudiantes;
     private JLabel lblAprobados;
     private JLabel lblReprobados;
     private JLabel lblPromedioGeneral;
 
-    //Botones de acción
+    //Botones de accion
     private JButton btnAgregar;
     private JButton btnModificar;
     private JButton btnEliminar;
@@ -104,7 +104,7 @@ public class DashBoardControlAcademico extends JFrame {
         menu.setBackground(COLOR_MENU);
         menu.setLayout(new BorderLayout());
 
-        //Perfil
+        //Pwrfil
         JPanel pnlPerfil = new JPanel();
         pnlPerfil.setOpaque(false);
         pnlPerfil.setLayout(new BoxLayout(pnlPerfil, BoxLayout.Y_AXIS));

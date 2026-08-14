@@ -47,5 +47,22 @@ public class GestorEstudiante {
         }
         return true;
     }
+    public Estudiante buscarId(int id){
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getId()==id){
+                return e;
+            }
+        }
+        return null;
+    }
+    public Estudiante buscarPorIdentificacion(String identificacion){
+        for (Estudiante e: listaEstudiantes){
+            if(e.getIdentificacion() == identificacion){
+                return e;
+            }
+        }
+        return null;
+    }
+
 
 }

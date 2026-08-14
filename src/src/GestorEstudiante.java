@@ -139,5 +139,12 @@ public ArrayList<Estudiante> filtrarPorCarrera(String carrera) {
         return suma / listaEstudiantes.size();
     }
 
+    public ArrayList<Estudiante> listarTodos() {
+        return listaEstudiantes;
+    }
+ //esta funcion lo que hace es ver si ya hay otro estudiante con esa identificacion
+    public boolean existeIdentificacion(String identificacion) {
+        return buscarPorIdentificacion(identificacion) != null;
+    }
 
 }

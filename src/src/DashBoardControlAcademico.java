@@ -93,7 +93,7 @@ public class DashBoardControlAcademico extends JFrame {
         gestor.agregarEstudiante("Esteban Oviedo", false, 90,
                 "111222333", "Ingenieria en sistemas", "Estructuras de datos");
 
-        gestor.agregarEstudiante("Juan Perez", false, 50, "1112223334", "Ingenieria en sistemas",
+        gestor.agregarEstudiante("Fabiano Vilchez", false, 50, "1112223334", "Ingenieria en sistemas",
                 "Arquitectura de computadores");
     }
 
@@ -104,7 +104,7 @@ public class DashBoardControlAcademico extends JFrame {
         menu.setBackground(COLOR_MENU);
         menu.setLayout(new BorderLayout());
 
-        //Pwrfil
+        //Perfil
         JPanel pnlPerfil = new JPanel();
         pnlPerfil.setOpaque(false);
         pnlPerfil.setLayout(new BoxLayout(pnlPerfil, BoxLayout.Y_AXIS));
@@ -512,27 +512,63 @@ public class DashBoardControlAcademico extends JFrame {
     }
 
     private boolean validarCampos() {
-        if (txtIdentificacion.getText().trim().isEmpty() ||
-                txtNombre.getText().trim().isEmpty() ||
-                txtCurso.getText().trim().isEmpty() ||
-                txtNota.getText().trim().isEmpty()) {
+
+        if (txtIdentificacion.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "Todos los campos son obligatorios.",
                     "Datos incompletos", JOptionPane.WARNING_MESSAGE);
             return false;
         }
 
+        if (txtNombre.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos son obligatorios.",
+                    "Datos incompletos", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (txtCurso.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos son obligatorios.",
+                    "Datos incompletos", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (txtNota.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Todos los campos son obligatorios.",
+                    "Datos incompletos", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        String textoNota = txtNota.getText();
+        textoNota = textoNota.trim();
+        boolean esNumeroValido = true;
+        double nota = 0;
+
         try {
-            double nota = Double.parseDouble(txtNota.getText().trim());
-            if (nota < 0 || nota > 100) {
-                JOptionPane.showMessageDialog(this,
-                        "La nota debe estar entre 0 y 100.",
-                        "Nota inválida", JOptionPane.WARNING_MESSAGE);
-                return false;
-            }
+            nota = Double.parseDouble(textoNota);
         } catch (NumberFormatException ex) {
+            esNumeroValido = false;
+        }
+
+        if (esNumeroValido == false) {
             JOptionPane.showMessageDialog(this,
                     "La nota debe ser un número válido.",
+                    "Nota inválida", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (nota < 0) {
+            JOptionPane.showMessageDialog(this,
+                    "La nota debe estar entre 0 y 100.",
+                    "Nota inválida", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if (nota > 100) {
+            JOptionPane.showMessageDialog(this,
+                    "La nota debe estar entre 0 y 100.",
                     "Nota inválida", JOptionPane.WARNING_MESSAGE);
             return false;
         }
